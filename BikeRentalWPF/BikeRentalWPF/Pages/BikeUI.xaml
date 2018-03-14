@@ -1,0 +1,113 @@
+﻿<Page x:Class="BikeRentalWPF.Pages.BikeUI"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BikeRentalWPF.Pages"
+      xmlns:currency="clr-namespace:CurrencyTextBoxControl;assembly=CurrencyTextBoxControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="BikeUI">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Name ="BikeGrid" Grid.Column="0" Grid.Row="1" Margin="5" AutoGenerateColumns="False"
+				  ItemsSource="{Binding}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=ID}"
+									Header="ID" />
+                <DataGridTextColumn Binding="{Binding Path=Brand}"
+									Header="Marke" />
+                <DataGridTextColumn Binding="{Binding Path=PurchaseDate, StringFormat=\{0:dd.MM.yyyy\}}"
+									Header="Kaufdatum" />
+                <DataGridTextColumn Binding="{Binding Path=Notes}"
+									Header="Notizen" />
+                <DataGridTextColumn Binding="{Binding Path=LastService, StringFormat=\{0:dd.MM.yyyy\}}"
+									Header="Letztes Service" />
+                <DataGridTextColumn Binding="{Binding Path=PriceFirstHour}"
+									Header="Preis 1. Stunde" />
+                <DataGridTextColumn Binding="{Binding Path=PriceAdditionalHour}"
+									Header="Preis zusätzliche Stunden" />
+                <DataGridTextColumn Binding="{Binding Path=Category}"
+									Header="Kategorie" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Column="0" Grid.Row="2" Margin="2" Click="ChangeBike">Ändern</Button>
+        <Button Grid.Column="0" Grid.Row="3" Margin="2" Click="DeleteBikeAsync">Löschen</Button>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0">Sortieren nach:</Label>
+            <ComboBox Name="SortingBy" Grid.Column="1" Grid.Row="0">
+                <ComboBoxItem>Preis erste Stunde (aufsteigend)</ComboBoxItem>
+                <ComboBoxItem>Preis zusätzliche Stunden (aufsteigend)</ComboBoxItem>
+                <ComboBoxItem>Kaufdatum (absteigend)</ComboBoxItem>
+            </ComboBox>
+            <Button Grid.Column="2" Grid.Row="0" Margin="2" Click="Sorting">Sortieren</Button>
+        </Grid>
+
+        <Label Grid.Column="1" Grid.Row="0">Neuen Kunden anlegen:</Label>
+        <Grid Grid.Column="1" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Column="0" Grid.Row="0">Marke:*</Label>
+            <TextBox Name="Brand" Grid.Column="1" Grid.Row="0"></TextBox>
+            <Label Grid.Column="0" Grid.Row="1">Kauddatum:*</Label>
+            <DatePicker Name="PurchaseDate" Grid.Column="1" Grid.Row="1"></DatePicker>
+            <Label Grid.Column="0" Grid.Row="2">Notizen:</Label>
+            <TextBox Name="Notes" Grid.Column="1" Grid.Row="2"></TextBox>
+            <Label Grid.Column="0" Grid.Row="3">Letztes Service:*</Label>
+            <DatePicker Name="LastService" Grid.Column="1" Grid.Row="3"></DatePicker>
+            <Label Grid.Column="0" Grid.Row="4">Preis 1. Stunde:*</Label>
+            <currency:CurrencyTextBox Name="PriceFirstHour" Grid.Column="1" Grid.Row="4"/>
+            <Label Grid.Column="0" Grid.Row="5">Preis zusätzliche Stunden:*</Label>
+            <currency:CurrencyTextBox Name="PriceAdditionalHour" Grid.Column="1" Grid.Row="5"/>
+            <Label Grid.Column="0" Grid.Row="6">Kategorie:*</Label>
+            <ComboBox Name="Category" Grid.Column="1" Grid.Row="6">
+                <ComboBoxItem>Standardbike</ComboBoxItem>
+                <ComboBoxItem>Mountainbike</ComboBoxItem>
+                <ComboBoxItem>Treckingbike</ComboBoxItem>
+                <ComboBoxItem>Rennrad</ComboBoxItem>
+            </ComboBox>
+            <Button Grid.Column="1" Grid.Row="8" Margin="2" Click="AddBikeAsync">Hinzufügen</Button>
+
+        </Grid>
+    </Grid>
+</Page>

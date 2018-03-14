@@ -1,0 +1,48 @@
+﻿<Window x:Class="BikeRentalWPF.Pages.ChangeBike"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BikeRentalWPF.Pages"
+        mc:Ignorable="d"
+        Title="ChangeBike" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Marke:*</Label>
+        <TextBox Name="Brand" Grid.Column="1" Grid.Row="0"></TextBox>
+        <Label Grid.Column="0" Grid.Row="1">Kauddatum:*</Label>
+        <DatePicker Name="PurchaseDate" Grid.Column="1" Grid.Row="1"></DatePicker>
+        <Label Grid.Column="0" Grid.Row="2">Notizen:</Label>
+        <TextBox Name="Notes" Grid.Column="1" Grid.Row="2"></TextBox>
+        <Label Grid.Column="0" Grid.Row="3">Letztes Service:*</Label>
+        <DatePicker Name="LastService" Grid.Column="1" Grid.Row="3"></DatePicker>
+        <Label Grid.Column="0" Grid.Row="4">Preis 1. Stunde:*</Label>
+        <TextBox Name="PriceFirstHour" Grid.Column="1" Grid.Row="4"/>
+        <Label Grid.Column="0" Grid.Row="5">Preis zusätzliche Stunden:*</Label>
+        <TextBox Name="PriceAdditionalHour" Grid.Column="1" Grid.Row="5"/>
+        <Label Grid.Column="0" Grid.Row="6">Kategorie:*</Label>
+        <ComboBox Name="Category" Grid.Column="1" Grid.Row="6">
+            <ComboBoxItem>Standardbike</ComboBoxItem>
+            <ComboBoxItem>Mountainbike</ComboBoxItem>
+            <ComboBoxItem>Treckingbike</ComboBoxItem>
+            <ComboBoxItem>Rennrad</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Column="0" Grid.Row="8">* Pflichtfelder</Label>
+        <Button Grid.Column="1" Grid.Row="8" Margin="2" Click="ChangeAsync">Ändern</Button>
+    </Grid>
+</Window>
